@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Los Hijos del Maíz | Elotes y Antojitos Mexicanos</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --color-primary: #4E8C3B;     /* Verde principal */
+      --color-secondary: #2E5A2C;   /* Verde oscuro */
+      --color-accent: #E6761F;      /* Naranja botones */
+      --color-highlight: #F9CE38;   /* Amarillo brillante */
+      --color-text: #333333;        /* Texto más legible */
+      --color-white: #FFFFFF;       /* Blanco */
+      --color-light: #F8F9FA;       /* Fondo claro */
+      --color-border: #3B2D1F;      /* Bordes café */
+      --color-decor: #DA7E2F;       /* Naranja costura */
+    }
+
+    body {
+      background-color: var(--color-light);
+      color: var(--color-text);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.8;
+    }
+
+    /* Texto mejorado para legibilidad */
+    p, li {
+      color: var(--color-text);
+      font-size: 1.05rem;
+    }
+
+    /* Header */
+    .header-logo {
+      width: 80px;
+      height: auto;
+      border-radius: 50%;
+      border: 3px solid var(--color-highlight);
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    }
+
+    /* Navbar - Mejorado para móvil */
+    .navbar {
+      background-color: var(--color-secondary) !important;
+      border-bottom: 3px solid var(--color-decor);
+    }
+
+    .navbar-brand {
+      font-weight: bold;
+      color: var(--color-highlight) !important;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-link {
+      color: var(--color-white) !important;
+      font-weight: 500;
+      padding: 0.75rem 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link:hover, .nav-link:focus {
+      color: var(--color-highlight) !important;
+      transform: translateY(-2px);
+    }
+
+    /* Cierra el menú al hacer clic en móvil */
+    .navbar-collapse.show {
+      background-color: var(--color-secondary);
+      padding: 1rem;
+      border-radius: 0 0 10px 10px;
+    }
+
+    /* Hero Banner con efecto parallax */
+    .hero-banner {
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                  url('https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
+      height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      margin-bottom: 3rem;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      padding: 2rem;
+      background-color: rgba(46, 90, 44, 0.8);
+      border-radius: 15px;
+      border-left: 5px solid var(--color-decor);
+    }
+
+    /* Secciones con banners parallax */
+    .parallax-section {
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+      padding: 5rem 0;
+      margin: 3rem 0;
+    }
+
+    .parallax-overlay {
+      background-color: rgba(78, 140, 59, 0.85);
+      padding: 3rem;
+      color: white;
+    }
+
+    /* Botón de WhatsApp flotante */
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 99;
+      background-color: #25D366;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      text-align: center;
+      font-size: 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .whatsapp-btn:hover {
+      transform: scale(1.1);
+      background-color: #128C7E;
+      color: white;
+    }
+
+    /* Resto de estilos... (manteniendo los anteriores) */
+    .section {
+      background-color: var(--color-white);
+      border-left: 5px solid var(--color-decor);
+      padding: 2.5rem;
+      margin-bottom: 2.5rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+
+    h1, h2, h3, h4 {
+      color: var(--color-secondary);
+      font-weight: 700;
+    }
+
+    .text-highlight {
+      color: var(--color-accent);
+    }
+
+    .btn-custom {
+      background-color: var(--color-accent);
+      color: var(--color-white);
+      border: none;
+      padding: 0.75rem 2rem;
+      font-weight: 600;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-custom:hover {
+      background-color: var(--color-highlight);
+      color: var(--color-text);
+      transform: translateY(-3px);
+    }
+
+    .product-card {
+      border: none;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      background-color: var(--color-white);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+
+    @media (max-width: 768px) {
+      .hero-banner {
+        height: 60vh;
+        background-attachment: scroll;
+      }
+      
+      .parallax-section {
+        background-attachment: scroll;
+        padding: 3rem 0;
+      }
+    }
+
+    a{
+        text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- WhatsApp Button -->
+  <a href="https://wa.me/557352867987" class="whatsapp-btn" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="https://scontent.fcvj5-1.fna.fbcdn.net/v/t39.30808-6/458506431_1736077410533511_2381440293908212961_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=wJTusA53zusQ7kNvwFw-cza&_nc_oc=Adly8Ist0LJ9A8j9LWbGCnGZ1Kci6iya2xdpibq_OYd09ZaEG8dzfRIWtOGECfadlKpXvXQwVI4pZ8Karff4ti4y&_nc_zt=23&_nc_ht=scontent.fcvj5-1.fna&_nc_gid=lm7NRVNOdxzHJKYmlK5v1Q&oh=00_AfIhBv3CI3kv4zuPKIhFKFJajUiSZkF71IhVKzdUJXM_eQ&oe=6837F1BE" alt="Logo" class="header-logo me-2">
+        <span>Los Hijos del Maíz</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#inicio" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#productos" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Productos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#eventos" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Eventos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#nosotros" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Nosotros</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contacto" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Contacto</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Banner -->
+  <section class="hero-banner" id="inicio">
+    <div class="hero-content">
+      <h1 class="display-4 fw-bold" style="color:#DA7E2F">Sabores Auténticos de México</h1>
+      <p class="lead mb-4" style="color:#F8F9FA">Elotes, esquites y antojitos tradicionales preparados con la receta de la abuela</p>
+      <a href="https://wa.me/557352867987" class="btn btn-custom btn-lg" target="_blank">
+        <i class="fab fa-whatsapp me-2"></i> Pedir por WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="container my-5">
+    <!-- About Section -->
+    <section class="section" id="nosotros">
+      <div class="row align-items-center">
+        <div class="col-md-6 order-md-1 order-2">
+          <h2 class="mb-4">Nuestra <span class="text-highlight">Historia</span></h2>
+          <p>Desde 2010, Los Hijos del Maíz hemos llevado los auténticos sabores mexicanos a tu mesa. Lo que comenzó como un pequeño puesto familiar hoy es una tradición en la comunidad.</p>
+          <p>Nuestro secreto está en usar maíz criollo de la más alta calidad y preparar cada producto con las técnicas tradicionales que han pasado de generación en generación.</p>
+          <ul class="mt-3">
+            <li>Ingredientes 100% naturales</li>
+            <li>Recetas tradicionales</li>
+            <li>Preparación artesanal</li>
+            <li>Servicio con calidez</li>
+          </ul>
+        </div>
+        <div class="col-md-6 order-md-2 order-1 mb-4 mb-md-0">
+          <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Elotes tradicionales" class="img-fluid rounded shadow">
+        </div>
+      </div>
+    </section>
+
+    <!-- Parallax Banner 1 -->
+    <section class="parallax-section" style="background-image: url('https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');">
+      <div class="container">
+        <div class="parallax-overlay rounded text-center">
+          <h2 class="display-5 fw-bold " style="color:#FFFFFF;">Más que comida, una <span class="text-highlight">experiencia</span></h2>
+          <p class="lead" style="color:#F8F9FA">Cada bocado es un viaje a los sabores auténticos de México</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="section" id="productos">
+      <h2 class="text-center mb-5">Nuestros <span class="text-highlight">Productos</span></h2>
+      <div class="row">
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="product-card h-100">
+            <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Elotes preparados" class="img-fluid">
+            <div class="p-4">
+              <h3>Elotes Preparados</h3>
+              <p>Asados al carbón con mayonesa, queso cotija, chile piquín y limón. Disponibles en diferentes niveles de picor.</p>
+              <a href="https://wa.me/557352867987" class="btn btn-custom w-100 mt-3" target="_blank">
+                <i class="fab fa-whatsapp me-2"></i> Pedir ahora
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="product-card h-100">
+            <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Esquites" class="img-fluid">
+            <div class="p-4">
+              <h3>Esquites Tradicionales</h3>
+              <p>Granos de elote cocidos con epazote, servidos en vaso con los ingredientes clásicos que lo hacen irresistible.</p>
+              <a href="https://wa.me/557352867987" class="btn btn-custom w-100 mt-3" target="_blank">
+                <i class="fab fa-whatsapp me-2"></i> Pedir ahora
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="product-card h-100">
+            <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Tamales" class="img-fluid">
+            <div class="p-4">
+              <h3>Tamales Variados</h3>
+              <p>De mole verde, rajas con queso, dulce de fresa y otros sabores. Hechos con masa fresca y rellenos generosos.</p>
+              <a href="https://wa.me/557352867987" class="btn btn-custom w-100 mt-3" target="_blank">
+                <i class="fab fa-whatsapp me-2"></i> Pedir ahora
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="product-card h-100">
+            <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Aguas frescas" class="img-fluid">
+            <div class="p-4">
+              <h3>Aguas Frescas</h3>
+              <p>Horchata, jamaica, tamarindo y limón. El complemento perfecto para acompañar nuestros antojitos.</p>
+              <a href="https://wa.me/557352867987" class="btn btn-custom w-100 mt-3" target="_blank">
+                <i class="fab fa-whatsapp me-2"></i> Pedir ahora
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Parallax Banner 2 -->
+    <section class="parallax-section" style="background-image: url('https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');">
+      <div class="container">
+        <div class="parallax-overlay rounded text-center">
+          <h2 class="display-5 fw-bold" style="color:aliceblue">Llevamos la <span class="text-highlight">fiesta</span> a tu evento</h2>
+          <p class="lead mb-4" style="color:aliceblue">Servicio profesional para todo tipo de celebraciones</p>
+          <a href="#eventos" class="btn btn-custom btn-lg">
+            <i class="fas fa-calendar-alt me-2"></i> Cotizar mi evento
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="section" id="eventos">
+      <h2 class="text-center mb-5">Servicio para <span class="text-highlight">Eventos</span></h2>
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <div class="product-card h-100">
+            <div class="p-4 text-center">
+              <i class="fas fa-birthday-cake fa-3x mb-3 text-highlight"></i>
+              <h3>Fiestas Infantiles</h3>
+              <p>Llevamos diversión y sabor a las fiestas de tus niños con nuestro puesto de elotes y antojitos.</p>
+              <a href="https://wa.me/557352867987" class="btn btn-custom mt-3" target="_blank">
+                <i class="fab fa-whatsapp me-2"></i> Informes
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+          <div class="product-card h-100">
+            <div class="p-4 text-center">
+              <i class="fas fa-glass-cheers fa-3x mb-3 text-highlight"></i>
+              <h3>Eventos Sociales</h3>
+              <p>Bodas, XV años, graduaciones y más. Personalizamos nuestro servicio para tu evento especial.</p>
+              <a href="https://wa.me/557352867987" class="btn btn-custom mt-3" target="_blank">
+                <i class="fab fa-whatsapp me-2"></i> Informes
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+          <div class="product-card h-100">
+            <div class="p-4 text-center">
+              <i class="fas fa-briefcase fa-3x mb-3 text-highlight"></i>
+              <h3>Eventos Corporativos</h3>
+              <p>Servicio profesional para convenciones, lanzamientos de producto y reuniones empresariales.</p>
+              <a href="https://wa.me/557352867987" class="btn btn-custom mt-3" target="_blank">
+                <i class="fab fa-whatsapp me-2"></i> Informes
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contacto">
+      <div class="row">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <h2 class="mb-4">Contáctanos</h2>
+          <div class="mb-4">
+            <h4><i class="fas fa-map-marker-alt me-2 text-highlight"></i> Ubicación</h4>
+            <p>Encuéntranos en nuestro local o llévate nuestros productos a domicilio</p>
+          </div>
+          <div class="mb-4">
+            <h4><i class="fas fa-clock me-2 text-highlight"></i> Horario</h4>
+            <p>Lunes a Viernes: 10:00 am - 8:00 pm<br>
+            Sábado y Domingo: 9:00 am - 9:00 pm</p>
+          </div>
+          <div class="mb-4">
+            <h4><i class="fas fa-phone-alt me-2 text-highlight"></i> Teléfono</h4>
+            <p><a href="tel:7352867987" class="text-decoration-none">735 286 7987</a></p>
+          </div>
+          <div class="mb-4">
+            <h4><i class="fab fa-whatsapp me-2 text-highlight"></i> WhatsApp</h4>
+            <p><a href="https://wa.me/557352867987" class="text-decoration-none" target="_blank">55 73 5286-7987</a></p>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="p-4 rounded" style="background-color: var(--color-light);">
+            <h3 class="mb-4">Envíanos un mensaje</h3>
+            <form>
+              <div class="mb-3">
+                <input type="text" class="form-control" placeholder="Nombre completo" required>
+              </div>
+              <div class="mb-3">
+                <input type="email" class="form-control" placeholder="Correo electrónico" required>
+              </div>
+              <div class="mb-3">
+                <input type="tel" class="form-control" placeholder="Teléfono">
+              </div>
+              <div class="mb-3">
+                <textarea class="form-control" rows="4" placeholder="Tu mensaje" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-custom w-100">
+                <i class="fas fa-paper-plane me-2"></i> Enviar mensaje
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-4 mb-md-0">
+          <h4 class="text-highlight">Los Hijos del Maíz</h4>
+          <p style="color: #F8F9FA;">Autenticidad con sabor a tradición desde 2010.</p>
+          <div class="social-icons">
+            <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/557352867987" class="text-white" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4 mb-md-0">
+          <h4 class="text-highlight">Horario</h4>
+          <p style="color: #F8F9FA;">Lun-Vie: 10am - 8pm<br>
+          Sáb-Dom: 9am - 9pm</p>
+        </div>
+        <div class="col-md-4" style="color: #F8F9FA;">
+          <h4 class="text-highlight" style="color: #F8F9FA;">Contacto</h4>
+          <p><i class="fas fa-phone-alt me-2" style="color: #F8F9FA;"></i> 735 286 7987<br>
+          <i class="fab fa-whatsapp me-2" style="color: #F8F9FA;"></i> 55 73 5286-7987</p>
+        </div>
+      </div>
+      <hr class="my-4">
+      <div class="text-center">
+        <p class="mb-0" style="color: #F8F9FA;" >&copy; 2025 Los Hijos del Maíz. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Cierra el menú al hacer clic en un enlace (para móviles)
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        const navbarCollapse = document.querySelector('.navbar-collapse');
+        if (navbarCollapse.classList.contains('show')) {
+          const bsCollapse = new bootstrap.Collapse(navbarCollapse);
+          bsCollapse.hide();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
